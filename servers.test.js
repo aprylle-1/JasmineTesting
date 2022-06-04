@@ -22,9 +22,21 @@ describe("Servers test (with setup and tear-down)", function() {
 
   it('should create new row on updateServerTable()', function(){
     submitServerInfo();
-    updateServerTable();
+    // updateServerTable();
     let currentServerList = document.querySelectorAll("#serverTable tbody tr td")
     expect(currentServerList[0].innerText).toEqual("Alice");
+    expect(currentServerList[1].innerText).toEqual('$0.00');
+  })
+
+  it('should remove a row on updateServerList()', function(){
+    submitServerInfo();
+    serverNameInput.value = "Aprylle"
+    submitServerInfo();
+    updateServerList("server1");
+    updateServerTable();
+    debugger;
+    let currentServerList = document.querySelectorAll("#serverTable tbody tr td")
+    expect(currentServerList[0].innerText).toEqual("Aprylle");
     expect(currentServerList[1].innerText).toEqual('$0.00');
   })
 

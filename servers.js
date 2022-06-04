@@ -12,6 +12,7 @@ serverTable.addEventListener('click', function(event){
     let serverId = event.target.parentElement.id;
     //console.log(serverId);
     updateServerList(serverId);
+    updateServerTable();
     event.target.parentElement.remove()
   }
 })
@@ -54,15 +55,15 @@ function updateServerTable() {
   }
 }
 
-// function updateServerList (serverId){
-//   let newServerList = {};
-//   for (let server in allServers){
-//     if (server === serverId){
-//       newServerList = newServerList;
-//     }
-//     else{
-//       newServerList = allServers[server]
-//     }
-//   }
-//   allServers = newServerList;
-//   }
+function updateServerList (serverId){
+    let newServerList = {};
+    for (let key in allServers){
+      if (key == serverId){
+        newServerList = newServerList;
+      }
+      else{
+        newServerList[key] = allServers[key]
+      }
+    }
+    allServers = newServerList
+}
